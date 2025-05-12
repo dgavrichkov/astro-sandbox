@@ -1,0 +1,109 @@
+---
+const BASE_IMG_URL = "/images/css-advent-day1";
+
+const galleries = [
+  {
+    title: "Gallery 0",
+    images: [
+      `${BASE_IMG_URL}/image-1.jpg`,
+      `${BASE_IMG_URL}/image-2.jpg`,
+      `${BASE_IMG_URL}/image-3.jpg`,
+      `${BASE_IMG_URL}/image-4.jpg`,
+      `${BASE_IMG_URL}/image-5.jpg`,
+      `${BASE_IMG_URL}/image-exra.jpg`,
+    ],
+  },
+  {
+    title: "Gallery 1",
+    images: [
+      `${BASE_IMG_URL}/image-1.jpg`,
+      `${BASE_IMG_URL}/image-2.jpg`,
+      `${BASE_IMG_URL}/image-3.jpg`,
+      `${BASE_IMG_URL}/image-4.jpg`,
+      `${BASE_IMG_URL}/image-5.jpg`,
+    ],
+  },
+  {
+    title: "Gallery 2",
+    images: [
+      `${BASE_IMG_URL}/image-1.jpg`,
+      `${BASE_IMG_URL}/image-2.jpg`,
+      `${BASE_IMG_URL}/image-3.jpg`,
+      `${BASE_IMG_URL}/image-4.jpg`,
+    ],
+  },
+  {
+    title: "Gallery 3",
+    images: [
+      `${BASE_IMG_URL}/image-1.jpg`,
+      `${BASE_IMG_URL}/image-2.jpg`,
+      `${BASE_IMG_URL}/image-3.jpg`,
+    ],
+  },
+  {
+    title: "Gallery 4",
+    images: [`${BASE_IMG_URL}/image-1.jpg`, `${BASE_IMG_URL}/image-2.jpg`],
+  },
+  {
+    title: "Gallery 5",
+    images: [`${BASE_IMG_URL}/image-1.jpg`],
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Grid Gallery</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div>
+      <h1>CSS Grid Gallery</h1>
+      <a href="/">go home</a>
+    </div>
+    <main class="container">
+      {
+        galleries.map((gallery) => (
+          <section class="grid-section">
+            <h2>{gallery.title}</h2>
+            <ul class="gallery">
+              {gallery.images.map((image, imgIndex) => (
+                <li class="card">
+                  <img src={image} alt={`Image ${imgIndex + 1}`} width="300" />
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </main>
+  </body>
+</html>
+
+<style>
+  .gallery-section {
+    margin-bottom: 24px;
+  }
+
+  .gallery {
+    list-style: none;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: 158px 158px;
+    gap: 12px;
+  }
+
+  .card {
+    border-radius: 6px;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+</style>
