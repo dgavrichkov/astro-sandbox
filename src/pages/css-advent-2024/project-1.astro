@@ -3,7 +3,7 @@ const BASE_IMG_URL = "/images/css-advent-day1";
 
 const galleries = [
   {
-    title: "Gallery 0",
+    title: "Gallery 1",
     images: [
       `${BASE_IMG_URL}/image-1.jpg`,
       `${BASE_IMG_URL}/image-2.jpg`,
@@ -14,7 +14,7 @@ const galleries = [
     ],
   },
   {
-    title: "Gallery 1",
+    title: "Gallery 2",
     images: [
       `${BASE_IMG_URL}/image-1.jpg`,
       `${BASE_IMG_URL}/image-2.jpg`,
@@ -24,7 +24,7 @@ const galleries = [
     ],
   },
   {
-    title: "Gallery 2",
+    title: "Gallery 3",
     images: [
       `${BASE_IMG_URL}/image-1.jpg`,
       `${BASE_IMG_URL}/image-2.jpg`,
@@ -33,7 +33,7 @@ const galleries = [
     ],
   },
   {
-    title: "Gallery 3",
+    title: "Gallery 4",
     images: [
       `${BASE_IMG_URL}/image-1.jpg`,
       `${BASE_IMG_URL}/image-2.jpg`,
@@ -41,11 +41,11 @@ const galleries = [
     ],
   },
   {
-    title: "Gallery 4",
+    title: "Gallery 5",
     images: [`${BASE_IMG_URL}/image-1.jpg`, `${BASE_IMG_URL}/image-2.jpg`],
   },
   {
-    title: "Gallery 5",
+    title: "Gallery 6",
     images: [`${BASE_IMG_URL}/image-1.jpg`],
   },
 ];
@@ -67,7 +67,7 @@ const galleries = [
     <main class="container">
       {
         galleries.map((gallery) => (
-          <section class="grid-section">
+          <section class="gallery-section">
             <h2>{gallery.title}</h2>
             <ul class="gallery">
               {gallery.images.map((image, imgIndex) => (
@@ -84,15 +84,22 @@ const galleries = [
 </html>
 
 <style>
+  body {
+    font-family: Helvetica, sans-serif;
+  }
   .gallery-section {
+    margin: 0 auto;
     margin-bottom: 24px;
+    width: 560px;
+    padding: 16px 14px;
   }
 
   .gallery {
+    margin: 0;
+    padding: 0;
     list-style: none;
-
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 158px 158px;
     gap: 12px;
   }
@@ -101,9 +108,104 @@ const galleries = [
     border-radius: 6px;
     overflow: hidden;
 
+    grid-column: span 6;
     img {
       display: block;
       width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+  }
+
+  /* для двух и менее карточек - растягиваем их на обе строки */
+  .card:nth-last-child(-n + 2):first-child,
+  .card:nth-last-child(-n + 2):first-child ~ .card {
+    grid-row: span 2;
+  }
+
+  /* 2 columns */
+  .card:nth-last-child(n + 2):first-child,
+  .card:nth-last-child(n + 2):first-child ~ .card {
+    &:nth-child(1) {
+      grid-column: span 3;
+    }
+    &:nth-child(2) {
+      grid-column: span 3;
+    }
+  }
+
+  /* 3 columns */
+  .card:nth-last-child(n + 3):first-child,
+  .card:nth-last-child(n + 3):first-child ~ .card {
+    &:nth-child(1) {
+      grid-column: span 3;
+    }
+    &:nth-child(2) {
+      grid-column: span 3;
+    }
+    &:nth-child(3) {
+      grid-column: span 6;
+    }
+  }
+
+  /* 4 columns */
+  .card:nth-last-child(n + 4):first-child,
+  .card:nth-last-child(n + 4):first-child ~ .card {
+    &:nth-child(1) {
+      grid-column: span 3;
+    }
+    &:nth-child(2) {
+      grid-column: span 3;
+    }
+    &:nth-child(3) {
+      grid-column: span 3;
+    }
+    &:nth-child(4) {
+      grid-column: span 3;
+    }
+  }
+
+  /* 5 columns */
+  .card:nth-last-child(n + 5):first-child,
+  .card:nth-last-child(n + 5):first-child ~ .card {
+    &:nth-child(1) {
+      grid-column: span 3;
+    }
+    &:nth-child(2) {
+      grid-column: span 3;
+    }
+    &:nth-child(3) {
+      grid-column: span 2;
+    }
+    &:nth-child(4) {
+      grid-column: span 2;
+    }
+    &:nth-child(5) {
+      grid-column: span 2;
+    }
+  }
+
+  /* более шести - на пятом рисуем маркер, остальные будут спрятаны*/
+  .card:nth-last-child(n + 6):first-child,
+  .card:nth-last-child(n + 6):first-child ~ .card {
+    &:nth-child(5) {
+      position: relative;
+
+      &::after {
+        content: "+1";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: white;
+        font-size: 48px;
+        font-weight: bold;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+    }
+  }
+
+  .card:nth-child(n + 6) {
+    display: none;
   }
 </style>
