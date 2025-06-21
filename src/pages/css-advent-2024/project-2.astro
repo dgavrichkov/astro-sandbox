@@ -1,0 +1,90 @@
+---
+const BASE_IMG_URL = "/images/css-advent-day2";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Only Checkbox</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="css-advent-2024-page">
+      <h1>CSS Advent 2024 - Project 2: CSS Only Checkbox</h1>
+      <div class="project-content">
+        <p>
+          This project demonstrates a CSS-only checkbox using the :checked
+          pseudo-class.
+        </p>
+        <div class="checkbox">
+          <input type="checkbox" id="checkbox" class="checkbox__input" />
+          <label class="checkbox__body" for="checkbox">
+            <span class="checkbox__label"> Check me! </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .checkbox__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .checkbox__label {
+    /* TODO should be visually-hidden pattern */
+    display: none;
+  }
+
+  .checkbox__body {
+    display: block;
+    width: 120px;
+    height: 58px;
+    border-radius: 200px;
+    background: #7d7d7d;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .checkbox__body::before,
+  .checkbox__body::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
+    left: calc(60px - 47px / 2);
+    top: 6px;
+    transform: translateX(-30px);
+    background-color: #000;
+    transition: transform 0.2s ease-in-out;
+    z-index: 1;
+  }
+
+  .checkbox__body::after {
+    z-index: 2;
+  }
+
+  .checkbox__input:checked + .checkbox__body {
+    background-color: #00ff94;
+  }
+  .checkbox__input:checked + .checkbox__body::before {
+    transform: translateX(30px);
+  }
+  .checkbox__input:checked + .checkbox__body::after {
+    transform: translateX(30px);
+    background-color: #00ff94;
+
+    -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 50 L40 70 L80 30' stroke='white' stroke-width='10' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+
+    mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 50 L40 70 L80 30' stroke='white' stroke-width='10' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+  }
+</style>
