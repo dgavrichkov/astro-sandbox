@@ -1,0 +1,85 @@
+---
+const BASE_IMG_URL = "/images/css-advent-day3";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Only Tooltip</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="css-advent-2024-page">
+      <h1>CSS Advent 2024 - Project 3: CSS Only Tooltip</h1>
+      <div class="project-content">
+        <div class="tooltip">
+          <span class="tooltip__text">My Text</span>
+          <div class="tooltip__popup">
+            <span class="tooltip__title">My tooltip</span>
+            <div class="arrow-down"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .project-content {
+    border: 5px solid seagreen;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+  .tooltip {
+    font-family: Verdana, sans-serif;
+    position: relative;
+  }
+
+  .tooltip__text {
+    font-size: 24px;
+    border-bottom: 1px dashed black;
+    cursor: pointer;
+  }
+
+  .tooltip__popup {
+    padding: 10px 12px;
+    width: max-content;
+    max-width: 150px;
+    background: black;
+    border-radius: 15px;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    translate: -50%;
+    text-align: center;
+
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+  }
+
+  .tooltip:hover .tooltip__popup {
+    opacity: 1;
+  }
+
+  .tooltip__title {
+    color: #fff;
+  }
+
+  .arrow-down {
+    position: absolute;
+    left: 50%;
+    translate: -50% 0;
+
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+
+    border-top: 20px solid #000;
+  }
+</style>
