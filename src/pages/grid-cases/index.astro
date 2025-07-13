@@ -1,0 +1,63 @@
+---
+const BASE_URL = "/grid-cases";
+const menu = [
+  {
+    key: "project-1",
+    title: "Project 1: Performance",
+  },
+  {
+    key: "project-2",
+    title: "Project 2: Traveller's blog",
+  },
+  {
+    key: "project-3",
+    title: "Project 3: Floral Boutique",
+  },
+  {
+    key: "project-4",
+    title: "Project 4: Furly",
+  },
+  {
+    key: "project-5",
+    title: "Project 5: Let's speak",
+  },
+  {
+    key: "project-6",
+    title: "Project 6: Alt Home",
+  },
+  {
+    key: "project-7",
+    title: "Project 7: Abojur",
+  },
+  {
+    key: "project-8",
+    title: "Project 8: Green Screen",
+  },
+  {
+    key: "project-9",
+    title: "Project 9: AllFood",
+  },
+  {
+    key: "project-10",
+    title: "Project 10: Mmind",
+  },
+];
+---
+
+<div class="grid-cases">
+  <h1>Grid Cases</h1>
+  <div class="project-list">
+    <ul>
+      {
+        menu.map((item) => (
+          <li>
+            <article>
+              <h2>{item.title}</h2>
+              <a href={`${BASE_URL}/${item.key}`}>Link</a>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

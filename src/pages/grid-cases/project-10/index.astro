@@ -1,0 +1,380 @@
+---
+import "../../../shared/reset.css";
+import "./style.css";
+
+const BASE_IMG_URL = "/images/grid-project-10";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid: M-Mind Photos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header header">
+        <div class="logo header__logo">
+          <img src={`${BASE_IMG_URL}/logo.svg`} alt="m-mind logo" />
+        </div>
+        <section class="search">
+          <div class="search__field">
+            <input
+              id="search"
+              class="search__input"
+              type="text"
+              placeholder="Search"
+            />
+            <label for="search" class="visually-hidden">Search photos</label>
+          </div>
+        </section>
+        <section class="toolbar">
+          <button class="toolbar__button toolbar__favorites"
+            ><span>Favorites</span></button
+          >
+          <button class="toolbar__button toolbar__notifications"
+            ><span>Notifications</span></button
+          >
+          <button class="toolbar__button toolbar__profile">
+            <span>Profile</span>
+            <img
+              src={`${BASE_IMG_URL}/profile.jpg`}
+              alt=""
+              width="40"
+              height="40"
+            />
+          </button>
+        </section>
+      </header>
+      <main class="app__main main">
+        <h1 class="visually-hidden">M-mind photo gallery</h1>
+        <div class="filter container">
+          <h2 class="filter__title title">Популярные теги</h2>
+          <ul class="filter__list">
+            <li class="filter__item">
+              <button class="btn filter__button">Дизайн</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Фотография</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Творчество</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Архитектура</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Интерьер</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Декор</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Стиль</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Мода</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Тренд</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Эстетика</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Люди</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Портрет</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Дорога</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Путешествия</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Природа</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Горы</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Океан</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Море</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Животные</button>
+            </li>
+            <li class="filter__item">
+              <button class="btn filter__button">Черно-белое</button>
+            </li>
+          </ul>
+        </div>
+        <section class="store container">
+          <ul class="store__grid">
+            <li class="store__item store__item--large">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/1.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Beautiful city</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--large">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/2.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Flying Whale</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--large">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/3.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Dolphin</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--middle">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/4.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Tower on River</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--middle">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/5.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Boat</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--middle">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/6.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Boy</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--large">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/7.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Woman on beach</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--sm">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/8.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Oranment</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--sm">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/9.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Train</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--middle">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/10.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Sunglasses</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--middle">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/11.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Dogger</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--sm">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/12.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Road</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--large">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/13.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Spiral stairs</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--middle">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/14.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Horse</figcaption>
+                </figure>
+              </article>
+            </li>
+            <li class="store__item store__item--sm">
+              <article class="photocard">
+                <header class="photocard__overlay">
+                  <span class="photocard__likes">100</span>
+                </header>
+                <figure>
+                  <picture>
+                    <img
+                      src={`${BASE_IMG_URL}/photos/15.jpg`}
+                      alt="photo-name"
+                    />
+                  </picture>
+                  <figcaption>Travel on road</figcaption>
+                </figure>
+              </article>
+            </li>
+          </ul>
+          <div class="store__load">
+            <button class="btn loadmore">Load more</button>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="logo footer__logo">
+          <img src={`${BASE_IMG_URL}/logo.svg`} alt="m-mind logo" />
+        </div>
+        <div class="footer__rights">© 2021 Все права защищены</div>
+      </footer>
+    </div>
+  </body>
+</html>
