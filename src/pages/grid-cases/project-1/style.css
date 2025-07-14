@@ -1,9 +1,16 @@
-@layer reset, variables, components, states, extra;
+@layer reset, base, variables, components, states, utils;
 
 @layer variables {
   :root {
     --border-color: rgb(31, 30, 28, 0.2);
     --base-bg: #fcfbfa;
+  }
+}
+
+@layer base {
+  body {
+    font-family: "Lora", "Palatino Linotype", serif;
+    font-size: 18px;
   }
 }
 
@@ -50,6 +57,7 @@
   .hero__title {
     text-align: center;
     margin-bottom: 30px;
+    font-weight: normal;
     font-size: 46px;
     line-height: 1.5;
   }
@@ -74,22 +82,15 @@
 
   .main figcaption {
     margin-top: 16px;
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
   }
 
   .main figcaption p + p {
     margin-top: 10px;
-  }
-
-  .colspan-1 {
-    grid-column: span 1;
-  }
-
-  .colspan-2 {
-    grid-column: span 2;
-  }
-
-  .colspan-3 {
-    grid-column: 1 / -1;
   }
 
   .footer {
@@ -112,5 +113,19 @@
 
   .menu__link:hover {
     opacity: 0.5;
+  }
+}
+
+@layer utils {
+  .colspan-1 {
+    grid-column: span 1;
+  }
+
+  .colspan-2 {
+    grid-column: span 2;
+  }
+
+  .colspan-3 {
+    grid-column: 1 / -1;
   }
 }
