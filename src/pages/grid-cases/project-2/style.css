@@ -1,0 +1,25 @@
+@layer reset, base, variables, components, states, utils;
+
+@layer base {
+  body {
+    font-family: "Manrope", Verdana, sans-serif;
+  }
+}
+
+@layer components {
+  .header {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 50px 40px;
+  }
+}
