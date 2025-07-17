@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const COUNT = 14;
+const hexagons = Array(COUNT);
+---
+
+<BaseLayout pageTitle="Hexagons grid">
+  <div class="main">
+    <div class="container">
+      {hexagons.map((item) => <div class="hex" />)}
+    </div>
+  </div>
+</BaseLayout>
+
+<style></style>

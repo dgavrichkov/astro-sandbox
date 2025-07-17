@@ -1,9 +1,11 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../shared/reset.css";
+import "../styles/global.css";
 const { pageTitle } = Astro.props;
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -12,13 +14,36 @@ const { pageTitle } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
-  <body>
+  <body class="baselayout">
     <Header />
-    <h1>{pageTitle}</h1>
-    <slot></slot>
+    <div>
+      <h1>{pageTitle}</h1>
+      <slot />
+    </div>
     <Footer />
     <script>
       import "../scripts/menu.js";
     </script>
   </body>
 </html>
+
+<style>
+  .baselayout {
+    background-color: #f1f5f9;
+    font-family: sans-serif;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 90vw;
+    padding: 1rem;
+    line-height: 1.5;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100dvh;
+  }
+
+  h1 {
+    margin: 1rem 0;
+    font-size: 2.5rem;
+  }
+</style>

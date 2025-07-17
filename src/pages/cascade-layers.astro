@@ -1,34 +1,40 @@
-<div>
-  <h1>Cascade Layers</h1>
-  <main>
-    <div class="content">
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus animi
-        necessitatibus voluptatibus incidunt deserunt impedit, qui iusto cumque
-        officiis, dolorem, commodi doloribus rem! Aspernatur magni soluta
-        adipisci quam consequatur! Quidem?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, sequi
-        voluptas. Quaerat recusandae eligendi doloremque aperiam ipsum quia at
-        cupiditate vero autem libero sit in excepturi voluptas minus, deserunt
-        illo. Consequatur mollitia architecto, reiciendis, vero placeat sunt
-        incidunt ullam deleniti aliquam libero ipsa quia unde excepturi
-        molestias officiis cumque sint eveniet ipsum cum inventore! Dolores
-        doloremque esse voluptates distinctio unde!
-      </p>
-    </div>
-  </main>
-  <footer class="form-actions">
-    <div>
-      <button class="button">Save edits</button>
-      <button class="button button--ghost">Cancel</button>
-    </div>
-    <div>
-      <button class="button button--secondary">Button</button>
-    </div>
-  </footer>
-</div>
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div>
+    <h1>Cascade Layers</h1>
+    <main>
+      <div class="content">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus animi
+          necessitatibus voluptatibus incidunt deserunt impedit, qui iusto
+          cumque officiis, dolorem, commodi doloribus rem! Aspernatur magni
+          soluta adipisci quam consequatur! Quidem?
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, sequi
+          voluptas. Quaerat recusandae eligendi doloremque aperiam ipsum quia at
+          cupiditate vero autem libero sit in excepturi voluptas minus, deserunt
+          illo. Consequatur mollitia architecto, reiciendis, vero placeat sunt
+          incidunt ullam deleniti aliquam libero ipsa quia unde excepturi
+          molestias officiis cumque sint eveniet ipsum cum inventore! Dolores
+          doloremque esse voluptates distinctio unde!
+        </p>
+      </div>
+    </main>
+    <footer class="form-actions">
+      <div>
+        <button class="button">Save edits</button>
+        <button class="button button--ghost">Cancel</button>
+      </div>
+      <div>
+        <button class="button button--secondary">Button</button>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
 
 <style>
   @layer base, elements, objects, components, pages, themes;

@@ -1,4 +1,6 @@
 ---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
 const BASE_URL = "/grid-cases";
 const menu = [
   {
@@ -44,20 +46,22 @@ const menu = [
 ];
 ---
 
-<div class="grid-cases">
-  <h1>Grid Cases</h1>
-  <div class="project-list">
-    <ul>
-      {
-        menu.map((item) => (
-          <li>
-            <article>
-              <h2>{item.title}</h2>
-              <a href={`${BASE_URL}/${item.key}`}>Link</a>
-            </article>
-          </li>
-        ))
-      }
-    </ul>
+<BaseLayout>
+  <div class="grid-cases">
+    <h1>Grid Cases</h1>
+    <div class="project-list">
+      <ul>
+        {
+          menu.map((item) => (
+            <li>
+              <article>
+                <h2>{item.title}</h2>
+                <a href={`${BASE_URL}/${item.key}`}>Link</a>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
-</div>
+</BaseLayout>
