@@ -1,16 +1,67 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const COUNT = 14;
-const hexagons = Array(COUNT);
+const COUNT = 66;
+const hexagons = new Array(COUNT).fill(null);
 ---
 
 <BaseLayout pageTitle="Hexagons grid">
-  <div class="main">
-    <div class="container">
-      {hexagons.map((item) => <div class="hex" />)}
+  <div class="hexagons-wrap">
+    <div class="hexagons-wrap__container">
+      {
+        hexagons.map((item) => (
+          <div class="hex">
+            <span>hex</span>
+          </div>
+        ))
+      }
     </div>
   </div>
 </BaseLayout>
 
-<style></style>
+<style>
+  .hexagons-wrap {
+    display: flex;
+    --s: 100px; /* size  */
+    --m: 4px; /* margin */
+    --f: calc(1.732 * var(--s) + 4 * var(--m) - 1px);
+  }
+
+  .hexagons-wrap__container {
+    font-size: 0; /*disable white space between inline block element */
+  }
+
+  .hex {
+    width: var(--s);
+    margin: var(--m);
+    height: calc(var(--s) * 1.1547);
+    display: inline-block;
+    font-size: initial; /* we reset the font-size if we want to add some content */
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    background: teal;
+    margin-bottom: calc(
+      var(--m) - var(--s) * 0.2885
+    ); /* some negative margin to create overlap */
+  }
+
+  .hex span {
+    display: none;
+  }
+
+  /** create a float element that take up all the height at the left of the grid */
+  .hexagons-wrap__container::before {
+    content: "";
+    /** that has a width equal to half a hexagon (plus its margin). */
+    width: calc(var(--s) / 2 + var(--m));
+    float: left;
+    height: 120%;
+
+    /** A transparent one to create the “free space” while allowing the first row to stay in place */
+    /** and */
+    /** An opaque color to shift the second row to the right so the hexagons aren’t directly stacked on top of one another */
+    shape-outside: repeating-linear-gradient(
+      #0000 0 calc(var(--f) - 3px),
+      /** transparent */ #000 0 var(--f) /** opaque */
+    );
+  }
+</style>
