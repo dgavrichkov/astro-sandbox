@@ -103,166 +103,168 @@
         </article>
       </div>
     </section>
-</body>
+  </div>
 
-<style>
-  @import "../shared/reset.css" layer(reset);
-  @layer reset, theme, layout, blocks, demo;
+  <style>
+    @import "../shared/reset.css" layer(reset);
+    @layer reset, theme, layout, blocks, demo;
 
-  @layer theme {
-    :root {
-      --layout-fluid-min: 35ch;
-      --layout-default-repeat: 3;
-      --layout-default-gap: 3vmax;
-    }
-  }
-
-  @layer layout {
-    .repeating-grid {
-      --_grid-repeat: var(--grid-repeat, var(--layout-default-repeat));
-      --_repeating-grid-gap: var(--grid-gap, var(--layout-default-gap));
-      display: grid;
-      grid-template-columns: repeat(var(--_grid-repeat), 1fr);
-      gap: var(--_repeating-grid-gap);
-    }
-
-    .repeating-flex {
-      --_flex-repeat: var(--flex-repeat, var(--layout-default-repeat));
-      --_repeating-flex-gap: var(--flex-gap, var(--layout-default-gap));
-      --_gap-count: calc(var(--_flex-repeat) - 1);
-      --_gap-repeater-calc: calc(
-        var(--_repeating-flex-gap) / var(--_flex-repeat) * var(--_gap-count)
-      );
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--_repeating-flex-gap);
-
-      > * {
-        flex: 1 1 calc((100% / var(--_flex-repeat)) - var(--_gap-repeater-calc));
+    @layer theme {
+      :root {
+        --layout-fluid-min: 35ch;
+        --layout-default-repeat: 3;
+        --layout-default-gap: 3vmax;
       }
     }
 
-    .fluid-grid {
-      --_fluid-grid-min: var(--fluid-grid-min, var(--layout-fluid-min));
-      --_fluid-grid-gap: var(--grid-gap, var(--layout-default-gap));
-
-      display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(min(var(--_fluid-grid-min), 100%), 1fr)
-      );
-      gap: var(--_fluid-grid-gap);
-    }
-
-    .fluid-flex {
-      --_fluid-flex-min: var(--fluid-flex-min, var(--layout-fluid-min));
-      --_fluid-flex-gap: var(--flex-gap, var(--layout-default-gap));
-
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--_fluid-flex-gap);
-
-      > * {
-        flex: 1 1 var(--_fluid-flex-min);
-      }
-    }
-
-    .subgrid-rows {
-      &:has(> :nth-child(1):last-child) {
-        --_subgrid-rows: 1;
-      }
-      &:has(> :nth-child(2):last-child) {
-        --_subgrid-rows: 2;
-      }
-      &:has(> :nth-child(3):last-child) {
-        --_subgrid-rows: 3;
-      }
-      &:has(> :nth-child(4):last-child) {
-        --_subgrid-rows: 4;
-      }
-
-      > * {
+    @layer layout {
+      .repeating-grid {
+        --_grid-repeat: var(--grid-repeat, var(--layout-default-repeat));
+        --_repeating-grid-gap: var(--grid-gap, var(--layout-default-gap));
         display: grid;
-        gap: var(--subgrid-gap, 0);
-        grid-row: auto / span var(--subgrid-rows, 4);
-        grid-template-rows: subgrid;
+        grid-template-columns: repeat(var(--_grid-repeat), 1fr);
+        gap: var(--_repeating-grid-gap);
       }
-    }
-    :is(
-        .fluid-grid:not(.subgrid-rows),
-        .repeating-grid:not(.subgrid-rows),
-        .repeating-flex,
-        .fluid-flex
-      ) {
-      > * {
-        // shorthand that combines container-name and container-type
-        container: var(--grid-item-container, grid-item) / inline-size;
-      }
-    }
-  }
 
-  @layer demo {
-    .demo div {
-      aspect-ratio: 2 / 1;
-      background-color: hsl(320 100% 50%);
-    }
-    .demo-1 {
-      /* --grid-repeat: 5; */
-    }
-    .demo-2 {
-      --flex-repeat: 4;
-    }
-  }
-
-  @layer blocks {
-    @layer cards {
-      article {
-        padding: 1.2rem;
-        border-radius: 0.5rem;
-
-        background-image: linear-gradient(
-          to top right,
-          #ed00ff 0%,
-          #6000ff 100%
+      .repeating-flex {
+        --_flex-repeat: var(--flex-repeat, var(--layout-default-repeat));
+        --_repeating-flex-gap: var(--flex-gap, var(--layout-default-gap));
+        --_gap-count: calc(var(--_flex-repeat) - 1);
+        --_gap-repeater-calc: calc(
+          var(--_repeating-flex-gap) / var(--_flex-repeat) * var(--_gap-count)
         );
-        color: white;
-        @supports (color: color-mix(in oklab, red, tan)) {
-          background-image: linear-gradient(
-            to top right in oklab,
-            oklch(73% 0.5 302) 0%,
-            oklch(57% 0.39 276) 100%
-          );
-        }
-        border: 0.3rem solid #6000ff;
-        box-shadow:
-          rgba(0, 0, 0, 0.19) 0px 10px 20px,
-          rgba(0, 0, 0, 0.23) 0px 6px 6px;
-        & img {
-          aspect-ratio: 16 / 9;
-          object-fit: cover;
-          margin-block: 0 1rem;
-          border-radius: 0.5rem;
-        }
-        & p {
-          margin-block: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--_repeating-flex-gap);
+
+        > * {
+          flex: 1 1
+            calc((100% / var(--_flex-repeat)) - var(--_gap-repeater-calc));
         }
       }
 
-      @container (min-width: 700px) {
-        article {
+      .fluid-grid {
+        --_fluid-grid-min: var(--fluid-grid-min, var(--layout-fluid-min));
+        --_fluid-grid-gap: var(--grid-gap, var(--layout-default-gap));
+
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(min(var(--_fluid-grid-min), 100%), 1fr)
+        );
+        gap: var(--_fluid-grid-gap);
+      }
+
+      .fluid-flex {
+        --_fluid-flex-min: var(--fluid-flex-min, var(--layout-fluid-min));
+        --_fluid-flex-gap: var(--flex-gap, var(--layout-default-gap));
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--_fluid-flex-gap);
+
+        > * {
+          flex: 1 1 var(--_fluid-flex-min);
+        }
+      }
+
+      .subgrid-rows {
+        &:has(> :nth-child(1):last-child) {
+          --_subgrid-rows: 1;
+        }
+        &:has(> :nth-child(2):last-child) {
+          --_subgrid-rows: 2;
+        }
+        &:has(> :nth-child(3):last-child) {
+          --_subgrid-rows: 3;
+        }
+        &:has(> :nth-child(4):last-child) {
+          --_subgrid-rows: 4;
+        }
+
+        > * {
           display: grid;
-          grid-template-columns: 1fr 2fr;
-          grid-row: auto / span 3;
-          gap: 20px;
-          & h2 {
-            grid-column: 1 / 3;
+          gap: var(--subgrid-gap, 0);
+          grid-row: auto / span var(--subgrid-rows, 4);
+          grid-template-rows: subgrid;
+        }
+      }
+      :is(
+          .fluid-grid:not(.subgrid-rows),
+          .repeating-grid:not(.subgrid-rows),
+          .repeating-flex,
+          .fluid-flex
+        ) {
+        > * {
+          /* shorthand that combines container-name and container-type */
+          container: var(--grid-item-container, grid-item) / inline-size;
+        }
+      }
+    }
+
+    @layer demo {
+      .demo div {
+        aspect-ratio: 2 / 1;
+        background-color: hsl(320 100% 50%);
+      }
+      .demo-1 {
+        /* --grid-repeat: 5; */
+      }
+      .demo-2 {
+        --flex-repeat: 4;
+      }
+    }
+
+    @layer blocks {
+      @layer cards {
+        article {
+          padding: 1.2rem;
+          border-radius: 0.5rem;
+
+          background-image: linear-gradient(
+            to top right,
+            #ed00ff 0%,
+            #6000ff 100%
+          );
+          color: white;
+          @supports (color: color-mix(in oklab, red, tan)) {
+            background-image: linear-gradient(
+              to top right in oklab,
+              oklch(73% 0.5 302) 0%,
+              oklch(57% 0.39 276) 100%
+            );
+          }
+          border: 0.3rem solid #6000ff;
+          box-shadow:
+            rgba(0, 0, 0, 0.19) 0px 10px 20px,
+            rgba(0, 0, 0, 0.23) 0px 6px 6px;
+          & img {
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            margin-block: 0 1rem;
+            border-radius: 0.5rem;
+          }
+          & p {
             margin-block: 0;
           }
-          & img {
-            grid-row: auto / span 2;
+        }
+
+        @container (min-width: 700px) {
+          article {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-row: auto / span 3;
+            gap: 20px;
+            & h2 {
+              grid-column: 1 / 3;
+              margin-block: 0;
+            }
+            & img {
+              grid-row: auto / span 2;
+            }
           }
         }
       }
     }
-  }
-</style>
+  </style>
+</body>
