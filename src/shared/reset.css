@@ -63,3 +63,7 @@
     isolation: isolate;
   }
 }
+
+h1 {
+  color: pink;
+}
