@@ -1,0 +1,155 @@
+<section class="grid">
+  <div class="box box-1"></div>
+  <div class="box box-2"></div>
+  <div class="box box-3"></div>
+  <div class="box box-4"></div>
+  <div class="box box-5"></div>
+  <div class="box box-6"></div>
+  <div class="box box-7"></div>
+  <div class="box box-8"></div>
+  <div class="box box-9"></div>
+  <div class="box box-10"></div>
+</section>
+
+<style>
+  @property --x {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 80%;
+  }
+
+  @property --y {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 60%;
+  }
+
+  @property --color1 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #ff6f61;
+  }
+
+  @property --color2 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #d4ff40;
+  }
+
+  @property --color3 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #1ea4d9;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .box {
+    width: 350px;
+    height: 350px;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+    background: #333333;
+  }
+
+  .box-1 {
+    background: radial-gradient(#ff6f61, #1ea4d9);
+  }
+
+  .box-2 {
+    background: radial-gradient(#ff6f61 0%, #d4ff40 30%, #1ea4d9 100%);
+  }
+
+  .box-3 {
+    background: radial-gradient(
+      #ff6f61 0%,
+
+      /* Первая пара цветов */ #ff6f61 30%,
+      #d4ff40 30%,
+
+      /* Вторая пара цветов */ #d4ff40 60%,
+      #1ea4d9 60%,
+
+      #1ea4d9 100%
+    );
+  }
+
+  .box-4 {
+    background: radial-gradient(#ff6f61 -50px, #d4ff40 80px, #1ea4d9 200px);
+  }
+
+  .box-5 {
+    border-radius: 50%;
+    background: radial-gradient(#ff6f61, #d4ff40, #1ea4d9);
+  }
+
+  .box-6 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(#ff6f61, #d4ff40, #1ea4d9);
+    background-repeat: no-repeat;
+    background-size: 250px 150px;
+  }
+
+  .box-7 {
+    background: radial-gradient(at left top, #ff6f61, #d4ff40, #1ea4d9);
+  }
+
+  .box-8 {
+    background: radial-gradient(at 120px 50px, #ff6f61, #d4ff40, #1ea4d9);
+  }
+
+  .box-9 {
+    background: radial-gradient(at 80% 60%, #ff6f61, #d4ff40, #1ea4d9);
+  }
+
+  .box-10 {
+    --x: 80%;
+    --y: 60%;
+    --color1: #ff6f61;
+    --color2: #d4ff40;
+    --color3: #1ea4d9;
+    background: radial-gradient(
+      at var(--x) var(--y),
+      var(--color1),
+      var(--color2),
+      var(--color3)
+    );
+    animation: animateGradient 10s ease-in-out infinite alternate;
+  }
+
+  @keyframes animateGradient {
+    0% {
+      --x: 80%;
+      --y: 60%;
+      --color1: #ff6f61;
+      --color2: #d4ff40;
+      --color3: #1ea4d9;
+    }
+    33% {
+      --x: 20%;
+      --y: 40%;
+      --color1: #d4ff40;
+      --color2: #1ea4d9;
+      --color3: #ff6f61;
+    }
+    66% {
+      --x: 50%;
+      --y: 90%;
+      --color1: #1ea4d9;
+      --color2: #ff6f61;
+      --color3: #d4ff40;
+    }
+    100% {
+      --x: 80%;
+      --y: 60%;
+      --color1: #ff6f61;
+      --color2: #d4ff40;
+      --color3: #1ea4d9;
+    }
+  }
+</style>
