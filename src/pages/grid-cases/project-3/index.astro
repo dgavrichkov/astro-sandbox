@@ -15,49 +15,49 @@ const catalog = [
     id: "2",
     name: "Букет «Признание»",
     price: 1500,
-    img: "photo",
+    img: "photo-2",
   },
   {
     id: "3",
     name: "Букет «Сюрприз»",
     price: 1500,
-    img: "photo",
+    img: "photo-3",
   },
   {
     id: "4",
     name: "Букет «Апрель»",
     price: 1500,
-    img: "photo",
+    img: "photo-4",
   },
   {
     id: "5",
     name: "Букет «Сухоцветы»",
     price: 1500,
-    img: "photo",
+    img: "photo-5",
   },
   {
     id: "6",
     name: "Букет «Нежность»",
     price: 1500,
-    img: "photo",
+    img: "photo-6",
   },
   {
     id: "7",
     name: "Букет «Яркость»",
     price: 1500,
-    img: "photo",
+    img: "photo-7",
   },
   {
     id: "8",
     name: "Букет «Любовь»",
     price: 1500,
-    img: "photo",
+    img: "photo-8",
   },
   {
     id: "9",
     name: "Букет «Ласка»",
     price: 1500,
-    img: "photo",
+    img: "photo-9",
   },
 ];
 ---
@@ -71,6 +71,35 @@ const catalog = [
     <title>Grid: Floral Boutique</title>
   </head>
   <body>
+    <header class="header">
+      <figure class="header__logo">
+        <img alt="floral boutique logo" src={`${BASE_IMG_URL}/logo.svg`} />
+      </figure>
+      <nav class="header__navigation">
+        <a>Каталог</a>
+        <a>Подписка</a>
+        <a>Отзывы</a>
+        <a>Контакты</a>
+      </nav>
+      <div class="header_profile">
+        <address>
+          <a href="tel:+79239995566">+ 7 (923) 999 55 66</a>
+        </address>
+      </div>
+    </header>
+    <section class="hero">
+      <div class="hero__banner">
+        <h3 class="hero__title">Каталог</h3>
+        <figure class="hero__back">
+          <img
+            alt="banner picture with soft gentle flowers"
+            src={`${BASE_IMG_URL}/banner.webp`}
+            width="920"
+            height="350"
+          />
+        </figure>
+      </div>
+    </section>
     <section class="catalog">
       <h2 class="visually-hidden">Каталог товаров</h2>
       <ul class="catalog__list">
