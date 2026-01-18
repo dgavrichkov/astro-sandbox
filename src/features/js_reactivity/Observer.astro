@@ -1,0 +1,57 @@
+<section>
+  <h2>Observer example</h2>
+  <div id="ob-field">0</div>
+  <button id="ob-increment">+</button>
+  <button id="ob-decrement">-</button>
+  <button id="ob-log-btn">Disable Log</button>
+</section>
+
+<script>
+  // @ts-nocheck
+  import { Observable } from "./observable";
+
+  class CounterModel {
+    constructor(initialValue) {
+      this.counter = new Observable(initialValue);
+    }
+
+    increment = () => {
+      this.counter.value++;
+      this.counter.notify(this.counter.value);
+    };
+
+    decrement = () => {
+      this.counter.value--;
+      this.counter.notify(this.counter.value);
+    };
+  }
+
+  function setupCounter() {
+    const container = document.getElementById("ob-field");
+    const incrementBtn = document.getElementById("ob-increment");
+    const decrementBtn = document.getElementById("ob-decrement");
+    const loggerBtn = document.getElementById("ob-log-btn");
+
+    let { counter, decrement, increment } = new CounterModel(0);
+
+    counter.subscribe((count) => {
+      container.innerHTML = count;
+    });
+
+    const unsubLog = counter.subscribe((val) => console.log("Log", val));
+
+    loggerBtn.addEventListener("click", () => {
+      unsubLog();
+    });
+
+    incrementBtn.addEventListener("click", () => {
+      increment();
+    });
+
+    decrementBtn.addEventListener("click", () => {
+      decrement();
+    });
+  }
+
+  setupCounter();
+</script>
