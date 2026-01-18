@@ -1,0 +1,8 @@
+---
+import Greeting from "../features/preact_playground/Greeting";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+</BaseLayout>
