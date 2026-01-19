@@ -1,0 +1,35 @@
+<div>
+  <h2>EventEmitter example</h2>
+
+  <button id="subscribe">Subscribe</button>
+  <button id="emit">Emit event</button>
+  <button id="unsubscribe">Unsubscribe</button>
+
+  <pre id="log"></pre>
+</div>
+
+<script>
+  // @ts-nocheck
+  import { EventEmitter } from "../../shared/lib/MyEventEmitter/myEventEmitter";
+
+  const emitter = new EventEmitter();
+  const logEl = document.getElementById("log");
+
+  const handler = (data) => {
+    logEl.textContent += `Event received: ${data}\n`;
+  };
+
+  document.getElementById("subscribe").addEventListener("click", () => {
+    emitter.on("message", handler);
+    logEl.textContent += "Subscribed\n";
+  });
+
+  document.getElementById("emit").addEventListener("click", () => {
+    emitter.emit("message", "Hello from EventEmitter!");
+  });
+
+  document.getElementById("unsubscribe").addEventListener("click", () => {
+    emitter.remove("message", handler);
+    logEl.textContent += "Unsubscribed\n";
+  });
+</script>
