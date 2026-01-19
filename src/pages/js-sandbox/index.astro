@@ -9,3 +9,16 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   </nav>
   <EventEmitterExample />
 </BaseLayout>
+
+<script>
+  // @ts-nocheck
+  import { debounce } from "../../shared/lib/debounce";
+
+  const onResize = () => {
+    console.log("Window resized:", window.innerWidth);
+  };
+
+  const debouncedResize = debounce(onResize, 200);
+
+  window.addEventListener("resize", debouncedResize);
+</script>
