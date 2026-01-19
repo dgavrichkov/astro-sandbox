@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PathfinderSheet from "../features/pathfinder/Pathfinder";
+---
+
+<BaseLayout>
+  <section>
+    <h3>Pathfinder Charsheet prototype</h3>
+  </section>
+  <PathfinderSheet client:load />
+</BaseLayout>
+
+<script>
+  import * as yup from "yup";
+  import { isError } from "../shared/types/guards/isError";
+
+  const userSchema = yup.object({
+    username: yup
+      .string()
+      .min(3, "Username must have at least 3 characters")
+      .max(30)
+      .required(),
+    email: yup.string().email().required(),
+    age: yup.number().integer().min(18).required(),
+  });
+
+  const userData = {
+    username: "jo",
+    email: "john.doe@example.com",
+    age: 17,
+  };
+
+  async function validateUser() {
+    try {
+      const validData = await userSchema.validate(userData, {
+        abortEarly: false,
+      });
+      console.log("Valid user data:", validData);
+    } catch (error) {
+      if (isError(error) && "inner" in error) {
+        console.error("Validation errors:", error.inner);
+      }
+    }
+  }
+
+  validateUser();
+</script>
