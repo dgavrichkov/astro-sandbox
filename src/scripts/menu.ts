@@ -5,5 +5,3 @@ if (ham && navLinks) {
     navLinks.classList.toggle("expanded");
   });
 }
-
-console.log("Client TS!");
